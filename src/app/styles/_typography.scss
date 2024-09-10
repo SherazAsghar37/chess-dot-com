@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Chess Sans";
+  src: url("../fonts/chess-sans.ttf") format("truetype");
+}
+
+@mixin font-heading1-regular {
+  /* Heading 1/Regular */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 100px;
+  line-height: 105%;
+  font-family: "Chess Sans", sans-serif;
+  /* identical to box height, or 105% */
+  font-feature-settings: "ss12" on, "ss08" on, "ss14" on, "ss15" on, "ss18" on,
+    "ss19" on;
+}
+
+//Article
+
+@mixin font-article1-regular {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 45px;
+  font-family: "Chess Sans", sans-serif;
+  /* identical to box height, or 129% */
+  font-feature-settings: "ss12" on, "ss08" on, "ss14" on, "ss15" on, "ss18" on,
+    "ss19" on;
+  color: #000000;
+}
+
+h1,
+.h1 {
+  @include font-heading1-regular;
+}
+
+p {
+  @include font-article1-regular;
+}

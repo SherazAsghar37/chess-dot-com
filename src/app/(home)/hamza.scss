@@ -1,0 +1,422 @@
+@mixin card() {
+  flex-basis: calc(100% / 3 - 75px);
+  @media (max-width: 991px) {
+    flex-basis: calc(100% / 2 - 75px);
+  }
+  @media (max-width: 768px) {
+    flex-basis: calc(100%);
+  }
+}
+
+#custom_product_addons_selection_module_UI {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  .loading {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    animation: fadeInOut 2s infinite;
+    cursor: progress;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .info {
+    order: -1;
+    .top-bar {
+      background-color: #242424;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 30px;
+      .dots {
+        display: flex;
+        gap: 20px;
+      }
+      .total-sub {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: white;
+        font-size: 24px;
+        .title {
+          text-transform: capitalize;
+        }
+        .value {
+          font-weight: bold;
+        }
+      }
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 60px;
+      padding-bottom: 80px;
+      .intro {
+        text-align: center;
+        max-width: 660px;
+        font-family: "Poppins", Sans-serif;
+        .title {
+          font-weight: bold;
+          font-size: 40px;
+        }
+        .desc {
+          font-weight: 500;
+        }
+      }
+      button {
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        gap: 10px;
+        color: #464646;
+        align-items: center;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+  }
+  .body {
+    #main-stage,
+    #current-stage {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      // grid-template-columns: 1fr 1fr 1fr;
+      gap: 75px;
+
+      &.ReadingPerscription {
+        grid-template-columns: 1fr;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .prescription-container {
+          .prescription-table {
+            width: 100%;
+            border: none;
+            border-collapse: collapse;
+
+            th,
+            td {
+              padding: 8px;
+              text-align: center;
+              border: none;
+            }
+
+            th {
+              background-color: transparent;
+              font-weight: bold;
+              border: none;
+            }
+
+            td {
+              select {
+                width: 100%;
+                padding: 5px 20px;
+                border-radius: 20px;
+                height: 60px;
+              }
+            }
+
+            tbody {
+              tr {
+                border-top: 50px solid transparent;
+                &:nth-child(1) {
+                  border: none;
+                }
+                td {
+                  &:nth-child(1) {
+                    font-weight: 400;
+                    font-size: 30px;
+                    font-family: "Poppins", Sans-serif;
+                    text-align: left;
+                    width: max-content;
+                    width: 250px;
+                  }
+                }
+              }
+              tr.content-wrapper {
+                td.content {
+                  text-align: left;
+
+                  .prescription-table-prism {
+                    border: none;
+                    display: none;
+                    @media (min-width: 991px) {
+                      margin-left: -27.5%;
+                    }
+                  }
+
+                  hr {
+                    margin: 30px 0;
+                    border: 1px solid #c2c2c2;
+                  }
+                  .prism {
+                    input {
+                      margin-right: 10px;
+                    }
+                  }
+                  .pd {
+                    display: flex;
+                    flex-direction: column;
+                    .inputs {
+                      display: flex;
+                      gap: 20px;
+                      max-width: 400px;
+                      .checked {
+                        display: none;
+                      }
+                    }
+                    .set_pd_state {
+                      margin-top: 32px;
+                      input {
+                        margin-right: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            thead {
+              display: none;
+            }
+
+            // Desktop styles
+            @media (min-width: 991px) {
+              .prescription-table {
+                display: table;
+              }
+
+              th,
+              td {
+                display: table-cell;
+              }
+            }
+
+            // Mobile styles
+            @media (max-width: 991px) {
+              .prescription-table {
+                display: block;
+              }
+
+              thead {
+                display: none; // Hide table headers on mobile
+              }
+
+              tbody tr {
+                display: block;
+                margin-bottom: 10px;
+              }
+
+              td {
+                display: block;
+                text-align: left;
+                padding-left: 0;
+              }
+            }
+          }
+          .end {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            align-items: center;
+            button {
+              text-align: center;
+            }
+            .message {
+              text-align: center;
+              font-weight: 400;
+              font-size: 16px;
+              font-family: "Poppins", Sans-serif;
+            }
+          }
+        }
+      }
+
+      .package-card,
+      .perscription-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        gap: 25px;
+        background-color: #f7f8fd;
+        padding: 30px;
+        position: relative;
+        @include card();
+        &.popular {
+          border: 1px solid #242424;
+        }
+        .desc {
+          text-align: center;
+          font-weight: 400;
+          font-size: 16px;
+          font-family: "Poppins", Sans-serif;
+        }
+        .popular {
+          position: absolute;
+          bottom: calc(100% + 10px);
+          left: 0;
+          background-color: #242424;
+          width: 100%;
+          text-align: center;
+          border-radius: 20px;
+          font-weight: 400;
+          font-size: 16px;
+          font-family: "Poppins", Sans-serif;
+          color: white;
+        }
+        .price {
+          text-align: center;
+          font-family: "Poppins", Sans-serif;
+          font-size: 30px;
+          font-weight: 500;
+          line-height: 1;
+        }
+        .points {
+          align-self: baseline;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
+        .image {
+          img {
+            height: 132px;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .button-wrap {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+          button {
+            margin-top: 30px;
+          }
+        }
+      }
+      .type-card,
+      .color-card,
+      .frame-style-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        gap: 40px;
+        overflow: hidden;
+        background-color: #f7f8fd;
+        padding: 30px;
+        @include card();
+
+        &.frame-style-card {
+          gap: 5px;
+          .image {
+            img {
+              height: auto;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+        .title {
+          text-align: center;
+          font-family: "Poppins", Sans-serif;
+          font-size: 30px;
+          font-weight: 500;
+          line-height: 1;
+        }
+        button {
+          align-self: center;
+          margin: 0;
+        }
+        .image {
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      button {
+        font-family: "Poppins", Sans-serif;
+        font-size: 24px;
+        margin-top: 20px;
+        font-weight: 700;
+        line-height: 27px;
+        background-color: var(--e-global-color-15f1979);
+        border-radius: 10px 10px 10px 10px;
+        padding: 15px 70px 15px 70px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #f7f8fd;
+        @include card();
+
+        .image {
+          img {
+            border-radius: 20px;
+            height: 216px;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+        .content {
+          padding: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          align-items: center;
+          flex: 1;
+          .title {
+            font-family: "Poppins", Sans-serif;
+            font-size: 30px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1;
+          }
+          .points {
+            align-self: baseline;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+          }
+          .button-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
